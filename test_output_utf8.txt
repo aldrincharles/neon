@@ -1,0 +1,187 @@
+﻿.\venv\Scripts\python.e
+xe : Creating test 
+database for alias 
+'default'...
+At line:1 char:1
++ .\venv\Scripts\python
+.exe manage.py test 
+application > 
+test_output.tx ...
++ ~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~
+~~
+    + CategoryInfo     
+         : NotSpecifi  
+  ed: (Creating test   
+  d...as 'default'.    
+..:String) [], Rem    
+oteException
+    + FullyQualifiedEr 
+   rorId : NativeComm  
+  andError
+ 
+
+...EEFF.........
+=======================
+=======================
+=======================
+=
+ERROR: test_job_details
+_active_page_context (a
+pplication.test_views.J
+obDetailsViewTests.test
+_job_details_active_pag
+e_context)
+job_details_view 
+should pass 
+active_page='jobs' in 
+context.
+-----------------------
+-----------------------
+-----------------------
+-
+Traceback (most recent 
+call last):
+  File "C:\Users\charl\
+Documents\Projects\Neon
+\application\test_views
+.py", line 106, in test
+_job_details_active_pag
+e_context
+    self.assertEqual(re
+sponse.context['active_
+page'], 'jobs')
+                     ~~
+~~~~~~~~~~~~~~^^^^^^^^^
+^^^^^^
+  File "C:\Users\charl\
+Documents\Projects\Neon
+\venv\Lib\site-packages
+\django\template\contex
+t.py", line 91, in 
+__getitem__
+    raise KeyError(key)
+KeyError: 'active_page'
+
+=======================
+=======================
+=======================
+=
+ERROR: test_job_details
+_job_id_in_context (app
+lication.test_views.Job
+DetailsViewTests.test_j
+ob_details_job_id_in_co
+ntext)
+job_details_view 
+should pass the job_id 
+integer in context.
+-----------------------
+-----------------------
+-----------------------
+-
+Traceback (most recent 
+call last):
+  File "C:\Users\charl\
+Documents\Projects\Neon
+\application\test_views
+.py", line 111, in test
+_job_details_job_id_in_
+context
+    self.assertEqual(re
+sponse.context['job_id'
+], 3)
+                     ~~
+~~~~~~~~~~~~~~^^^^^^^^^
+^
+  File "C:\Users\charl\
+Documents\Projects\Neon
+\venv\Lib\site-packages
+\django\template\contex
+t.py", line 91, in 
+__getitem__
+    raise KeyError(key)
+KeyError: 'job_id'
+
+=======================
+=======================
+=======================
+=
+FAIL: test_job_details_
+returns_200 (applicatio
+n.test_views.JobDetails
+ViewTests.test_job_deta
+ils_returns_200)
+job_details_view 
+should return HTTP 200 
+OK for a valid job_id.
+-----------------------
+-----------------------
+-----------------------
+-
+Traceback (most recent 
+call last):
+  File "C:\Users\charl\
+Documents\Projects\Neon
+\application\test_views
+.py", line 96, in test_
+job_details_returns_200
+    self.assertEqual(re
+sponse.status_code, 
+200)
+    ~~~~~~~~~~~~~~~~^^^
+^^^^^^^^^^^^^^^^^^^^^^^
+^
+AssertionError: 404 != 
+200
+
+=======================
+=======================
+=======================
+=
+FAIL: test_job_details_
+uses_correct_template (
+application.test_views.
+JobDetailsViewTests.tes
+t_job_details_uses_corr
+ect_template)
+job_details_view 
+should render 
+jobs/JobDetails.html.
+-----------------------
+-----------------------
+-----------------------
+-
+Traceback (most recent 
+call last):
+  File "C:\Users\charl\
+Documents\Projects\Neon
+\application\test_views
+.py", line 101, in test
+_job_details_uses_corre
+ct_template
+    self.assertTemplate
+Used(response, 
+'jobs/JobDetails.html')
+    ~~~~~~~~~~~~~~~~~~~
+~~~~^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^
+AssertionError: No 
+templates used to 
+render the response
+
+-----------------------
+-----------------------
+-----------------------
+-
+Ran 16 tests in 0.043s
+
+FAILED (failures=2, 
+errors=2)
+Destroying test 
+database for alias 
+'default'...
+
+Found 16 test(s).
+System check identified no issues (0 silenced).

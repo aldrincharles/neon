@@ -127,32 +127,44 @@
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-slate-100">
-                                <tr class="hover:bg-slate-50 transition-colors group">
+                                {% for applicant in applicants %}
+                                <tr class="hover:bg-slate-50 transition-colors group"
+                                    data-applicant-id="{{ applicant.id }}">
                                     <td class="px-6 py-4">
                                         <div class="flex items-center gap-3">
+                                            {% if applicant.avatar_url %}
                                             <img alt="Applicant Avatar"
                                                 class="size-10 rounded-full border border-slate-200 object-cover"
-                                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmKqs1b-UJLzKoYBN2HgwL3XrWaxbUbvmMMfvfOWSkbnI5ExxC_fpzdC87ZRG8WQAdH8yGRAQf7nKllyncEUPzElJYPuc2b2yPG1eWW_DTs-JNgxnywYamSNz55uRZapSra8XRg_fZKBjk0x0qZLNgvn6eSxqoypygoE3wFO0bKdR6xcIax9xdC6UXrqfa25M28EIfdmOOCQGP6kIidhW4EJD3vb5X8j_PxKoGnro6xW2jdvWciepVcROmvrdeRcHTVorTJYKYcYv1" />
+                                                src="{{ applicant.avatar_url }}" />
+                                            {% else %}
+                                            <div
+                                                class="size-10 rounded-full bg-slate-200 flex items-center justify-center font-bold text-slate-500">
+                                                {{ applicant.name|make_list|first }}</div>
+                                            {% endif %}
                                             <div>
-                                                <p class="text-sm font-bold text-slate-900">Sarah Jenkins</p>
-                                                <p class="text-xs text-slate-500">Applied 2 days ago</p>
+                                                <p class="text-sm font-bold text-slate-900">{{ applicant.name }}</p>
+                                                <p class="text-xs text-slate-500">Applied {{ applicant.applied_date }}
+                                                </p>
                                             </div>
                                         </div>
                                     </td>
                                     <td class="px-6 py-4">
-                                        <p class="text-sm text-slate-700 font-medium">Senior Software Engineer</p>
+                                        <p class="text-sm text-slate-700 font-medium">{{ applicant.job_title }}</p>
                                     </td>
                                     <td class="px-6 py-4">
                                         <span
-                                            class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-50 text-indigo-700 border border-indigo-100">FinTech</span>
+                                            class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-50 text-indigo-700 border border-indigo-100">{{
+                                            applicant.industry }}</span>
                                     </td>
                                     <td class="px-6 py-4">
                                         <span
-                                            class="inline-flex items-center px-3 py-1 rounded-md text-[11px] font-bold uppercase tracking-wider badge-gold cursor-pointer hover:ring-2 hover:ring-offset-1 hover:ring-primary/50 transition-all grade-trigger">Gold</span>
+                                            class="inline-flex items-center px-3 py-1 rounded-md text-[11px] font-bold uppercase tracking-wider badge-{{ applicant.grade|lower }} cursor-pointer hover:ring-2 hover:ring-offset-1 hover:ring-primary/50 transition-all grade-trigger"
+                                            data-target="grade">{{ applicant.grade }}</span>
                                     </td>
                                     <td class="px-6 py-4">
                                         <span
-                                            class="inline-flex items-center px-3 py-1 rounded-md text-[11px] font-bold uppercase tracking-wider badge-gold cursor-pointer hover:ring-2 hover:ring-offset-1 hover:ring-primary/50 transition-all grade-trigger">Gold</span>
+                                            class="inline-flex items-center px-3 py-1 rounded-md text-[11px] font-bold uppercase tracking-wider badge-{{ applicant.verified_grade|lower }} cursor-pointer hover:ring-2 hover:ring-offset-1 hover:ring-primary/50 transition-all grade-trigger"
+                                            data-target="verified_grade">{{ applicant.verified_grade }}</span>
                                     </td>
                                     <td class="px-6 py-4 text-center">
                                         <a class="text-[#0a66c2] hover:text-[#004182] transition-colors inline-flex items-center justify-center p-1.5 rounded-md hover:bg-slate-100"
@@ -165,183 +177,17 @@
                                         </a>
                                     </td>
                                     <td class="px-6 py-4 text-right">
-                                        <button class="text-slate-400 hover:text-slate-600">
-                                            <span class="material-symbols-outlined">more_vert</span>
-                                        </button>
+                                        <button class="text-slate-400 hover:text-slate-600"><span
+                                                class="material-symbols-outlined">more_vert</span></button>
                                     </td>
                                 </tr>
-                                <tr class="hover:bg-slate-50 transition-colors group">
-                                    <td class="px-6 py-4">
-                                        <div class="flex items-center gap-3">
-                                            <img alt="Applicant Avatar"
-                                                class="size-10 rounded-full border border-slate-200 object-cover"
-                                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0oEzNmZ7-nqGq1c_GY6VRxiHHtPUwRC2eLgU06poluHzBuT62oPZxH1ZZQJvFfgQ5wV80Y8t44xAjXe4jJzCUkT6bVUWzLUxxfq72z9VlUXrPw_L406HLKYkTpyWQa_6FleNTcxD_w022wnJ_lVfV6etJK-V5vhPAtDRnnmOGo-AVp5hbwctEGJ5DS6bh-5gtsH7RkMEwH0J6FJxd3G524nElqDVNAA_FVqlYBVFUoYooJZZTIZO99PDI1brZqntPFTJ6waNj6-zc" />
-                                            <div>
-                                                <p class="text-sm font-bold text-slate-900">Marcus Thorne</p>
-                                                <p class="text-xs text-slate-500">Applied 3 days ago</p>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        <p class="text-sm text-slate-700 font-medium">Full Stack Developer</p>
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        <span
-                                            class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-50 text-emerald-700 border border-emerald-100">HealthTech</span>
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        <span
-                                            class="inline-flex items-center px-3 py-1 rounded-md text-[11px] font-bold uppercase tracking-wider badge-silver cursor-pointer hover:ring-2 hover:ring-offset-1 hover:ring-primary/50 transition-all grade-trigger">Silver</span>
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        <span
-                                            class="inline-flex items-center px-3 py-1 rounded-md text-[11px] font-bold uppercase tracking-wider badge-gold cursor-pointer hover:ring-2 hover:ring-offset-1 hover:ring-primary/50 transition-all grade-trigger">Gold</span>
-                                    </td>
-                                    <td class="px-6 py-4 text-center">
-                                        <a class="text-[#0a66c2] hover:text-[#004182] transition-colors inline-flex items-center justify-center p-1.5 rounded-md hover:bg-slate-100"
-                                            href="#">
-                                            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
-                                                <path
-                                                    d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z">
-                                                </path>
-                                            </svg>
-                                        </a>
-                                    </td>
-                                    <td class="px-6 py-4 text-right">
-                                        <button class="text-slate-400 hover:text-slate-600">
-                                            <span class="material-symbols-outlined">more_vert</span>
-                                        </button>
+                                {% empty %}
+                                <tr>
+                                    <td colspan="7" class="px-6 py-8 text-center text-slate-500">
+                                        No applicants found.
                                     </td>
                                 </tr>
-                                <tr class="hover:bg-slate-50 transition-colors group">
-                                    <td class="px-6 py-4">
-                                        <div class="flex items-center gap-3">
-                                            <img alt="Applicant Avatar"
-                                                class="size-10 rounded-full border border-slate-200 object-cover"
-                                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtKfcuY7vWWdFmt8kjXqMlda8UWwyK6EtBlKyQMlLjaW_DsMbc9bVQi21N4fzuZDs7_jxWn1fXugFwWhdTlRYd8nPlZ2kKc1SjQmYVxZwbOG8ydn_2HG8CcV2k2-GSYET5yqkvBQ0tNqQ7srGIOWuVVtzd1QVdX3nPfbgDDcGaOvo2ooeYycS3WcSvAK8ighxVoIkHRjS8Y19XV8rlz23nP1lfxZJiC3VoXIwtzueg_pm293c0j95mwdg5xbBpHU_0DwIRyiSKrDoM" />
-                                            <div>
-                                                <p class="text-sm font-bold text-slate-900">Elena Rodriguez</p>
-                                                <p class="text-xs text-slate-500">Applied 5 days ago</p>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        <p class="text-sm text-slate-700 font-medium">Lead Engineer</p>
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        <span
-                                            class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-50 text-amber-700 border border-amber-100">E-commerce</span>
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        <span
-                                            class="inline-flex items-center px-3 py-1 rounded-md text-[11px] font-bold uppercase tracking-wider badge-bronze cursor-pointer hover:ring-2 hover:ring-offset-1 hover:ring-primary/50 transition-all grade-trigger">Bronze</span>
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        <span
-                                            class="inline-flex items-center px-3 py-1 rounded-md text-[11px] font-bold uppercase tracking-wider badge-silver cursor-pointer hover:ring-2 hover:ring-offset-1 hover:ring-primary/50 transition-all grade-trigger">Silver</span>
-                                    </td>
-                                    <td class="px-6 py-4 text-center">
-                                        <a class="text-[#0a66c2] hover:text-[#004182] transition-colors inline-flex items-center justify-center p-1.5 rounded-md hover:bg-slate-100"
-                                            href="#">
-                                            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
-                                                <path
-                                                    d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z">
-                                                </path>
-                                            </svg>
-                                        </a>
-                                    </td>
-                                    <td class="px-6 py-4 text-right">
-                                        <button class="text-slate-400 hover:text-slate-600">
-                                            <span class="material-symbols-outlined">more_vert</span>
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr class="hover:bg-slate-50 transition-colors group">
-                                    <td class="px-6 py-4">
-                                        <div class="flex items-center gap-3">
-                                            <img alt="Applicant Avatar"
-                                                class="size-10 rounded-full border border-slate-200 object-cover"
-                                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIZ3Q2iG6RlrHgZXuq42mL483nvoAwyH5KBhCJPD_rNEg8d2w-YlpxyZgYL6DgWtsIgXEhLc8aCdiflQ26LSi2xeJwERub9gZO4DxB3yaO01eWf2TB0Bxka6x-c8nP3aiB9wOx8zVQYTxSG965hgi84-XudnAYbFDj4IAem2PlJQeNkZ8-R8Qb3BYR5LBywguM8pyjiFzjKnYbd9OgqLYhGWBC78wDCP8YQRDpXzedTa6yqSuFbL1cF8RkARmVeJes2vqCOYgsQ9qH" />
-                                            <div>
-                                                <p class="text-sm font-bold text-slate-900">David Kim</p>
-                                                <p class="text-xs text-slate-500">Applied 1 week ago</p>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        <p class="text-sm text-slate-700 font-medium">Backend Engineer</p>
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        <span
-                                            class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-rose-50 text-rose-700 border border-rose-100">Crypto</span>
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        <span
-                                            class="inline-flex items-center px-3 py-1 rounded-md text-[11px] font-bold uppercase tracking-wider badge-rejected cursor-pointer hover:ring-2 hover:ring-offset-1 hover:ring-primary/50 transition-all grade-trigger">Rejected</span>
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        <span
-                                            class="inline-flex items-center px-3 py-1 rounded-md text-[11px] font-bold uppercase tracking-wider badge-rejected cursor-pointer hover:ring-2 hover:ring-offset-1 hover:ring-primary/50 transition-all grade-trigger">Rejected</span>
-                                    </td>
-                                    <td class="px-6 py-4 text-center">
-                                        <a class="text-[#0a66c2] hover:text-[#004182] transition-colors inline-flex items-center justify-center p-1.5 rounded-md hover:bg-slate-100"
-                                            href="#">
-                                            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
-                                                <path
-                                                    d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z">
-                                                </path>
-                                            </svg>
-                                        </a>
-                                    </td>
-                                    <td class="px-6 py-4 text-right">
-                                        <button class="text-slate-400 hover:text-slate-600">
-                                            <span class="material-symbols-outlined">more_vert</span>
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr class="hover:bg-slate-50 transition-colors group">
-                                    <td class="px-6 py-4">
-                                        <div class="flex items-center gap-3">
-                                            <img alt="Applicant Avatar"
-                                                class="size-10 rounded-full border border-slate-200 object-cover"
-                                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAaNErf7yBRK6DE65rRoYK7LAZ1_aSZ-jdBIH0UiPPSmAqz7u34bBZDQlJ3GchRdvNMJgf7hpBXj0UqNxm7wfn2HBN9xE_29Tu8B4K67YNYpflq0OGjzlI5gJnXjOQ0RRogH515C8LQ6zTaBWP8BA2wokoFwM16xr2lW8pMg9IENfE0eYN0dVcpU88XJxUpeZdrxwUgA4LPtGSKq_1I0x1MKijcjMnQ7_QfKktzDi_07j9bRVDGJPIuf9t_xi19A6NOIVSrJYjhwH6L" />
-                                            <div>
-                                                <p class="text-sm font-bold text-slate-900">Julianne Moore</p>
-                                                <p class="text-xs text-slate-500">Applied 1 week ago</p>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        <p class="text-sm text-slate-700 font-medium">Senior React Developer</p>
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        <span
-                                            class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-50 text-slate-700 border border-slate-100">SaaS</span>
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        <span
-                                            class="inline-flex items-center px-3 py-1 rounded-md text-[11px] font-bold uppercase tracking-wider badge-gold cursor-pointer hover:ring-2 hover:ring-offset-1 hover:ring-primary/50 transition-all grade-trigger">Gold</span>
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        <span
-                                            class="inline-flex items-center px-3 py-1 rounded-md text-[11px] font-bold uppercase tracking-wider badge-silver cursor-pointer hover:ring-2 hover:ring-offset-1 hover:ring-primary/50 transition-all grade-trigger">Silver</span>
-                                    </td>
-                                    <td class="px-6 py-4 text-center">
-                                        <a class="text-[#0a66c2] hover:text-[#004182] transition-colors inline-flex items-center justify-center p-1.5 rounded-md hover:bg-slate-100"
-                                            href="#">
-                                            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
-                                                <path
-                                                    d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z">
-                                                </path>
-                                            </svg>
-                                        </a>
-                                    </td>
-                                    <td class="px-6 py-4 text-right">
-                                        <button class="text-slate-400 hover:text-slate-600">
-                                            <span class="material-symbols-outlined">more_vert</span>
-                                        </button>
-                                    </td>
-                                </tr>
+                                {% endfor %}
                             </tbody>
                         </table>
                     </div>
@@ -362,7 +208,8 @@
 
 
     <!-- Grade Edit Modal Overlay -->
-    <div id="grade-modal-overlay" class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4 opacity-0 pointer-events-none transition-opacity duration-200">
+    <div id="grade-modal-overlay"
+        class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4 opacity-0 pointer-events-none transition-opacity duration-200">
         <div class="bg-white rounded-xl shadow-xl w-full max-w-sm overflow-hidden flex flex-col">
             <div class="px-6 py-4 border-b border-slate-200 flex items-center justify-between bg-slate-50">
                 <h3 class="text-lg font-bold text-slate-900">Update Grade</h3>
@@ -373,26 +220,35 @@
             <div class="p-6 space-y-4">
                 <p class="text-sm text-slate-500 mb-2">Select a new grade for this applicant.</p>
                 <div class="grid grid-cols-2 gap-3">
-                    <button class="grade-option border border-slate-200 rounded-lg p-3 flex flex-col items-center justify-center hover:border-amber-400 hover:bg-amber-50 transition-colors" data-grade="Gold" data-class="badge-gold">
+                    <button
+                        class="grade-option border border-slate-200 rounded-lg p-3 flex flex-col items-center justify-center hover:border-amber-400 hover:bg-amber-50 transition-colors"
+                        data-grade="Gold" data-class="badge-gold">
                         <span class="text-amber-500 material-symbols-outlined text-3xl mb-1">military_tech</span>
                         <span class="font-bold text-slate-700 text-sm">Gold</span>
                     </button>
-                    <button class="grade-option border border-slate-200 rounded-lg p-3 flex flex-col items-center justify-center hover:border-slate-400 hover:bg-slate-50 transition-colors" data-grade="Silver" data-class="badge-silver">
+                    <button
+                        class="grade-option border border-slate-200 rounded-lg p-3 flex flex-col items-center justify-center hover:border-slate-400 hover:bg-slate-50 transition-colors"
+                        data-grade="Silver" data-class="badge-silver">
                         <span class="text-slate-400 material-symbols-outlined text-3xl mb-1">military_tech</span>
                         <span class="font-bold text-slate-700 text-sm">Silver</span>
                     </button>
-                    <button class="grade-option border border-slate-200 rounded-lg p-3 flex flex-col items-center justify-center hover:border-orange-400 hover:bg-orange-50 transition-colors" data-grade="Bronze" data-class="badge-bronze">
+                    <button
+                        class="grade-option border border-slate-200 rounded-lg p-3 flex flex-col items-center justify-center hover:border-orange-400 hover:bg-orange-50 transition-colors"
+                        data-grade="Bronze" data-class="badge-bronze">
                         <span class="text-orange-500 material-symbols-outlined text-3xl mb-1">military_tech</span>
                         <span class="font-bold text-slate-700 text-sm">Bronze</span>
                     </button>
-                    <button class="grade-option border border-slate-200 rounded-lg p-3 flex flex-col items-center justify-center hover:border-rose-400 hover:bg-rose-50 transition-colors" data-grade="Rejected" data-class="badge-rejected">
+                    <button
+                        class="grade-option border border-slate-200 rounded-lg p-3 flex flex-col items-center justify-center hover:border-rose-400 hover:bg-rose-50 transition-colors"
+                        data-grade="Rejected" data-class="badge-rejected">
                         <span class="text-rose-500 material-symbols-outlined text-3xl mb-1">block</span>
                         <span class="font-bold text-slate-700 text-sm">Rejected</span>
                     </button>
                 </div>
             </div>
             <div class="px-6 py-4 border-t border-slate-200 bg-slate-50 flex justify-end gap-3">
-                <button id="btn-grade-modal-cancel" class="px-4 py-2 bg-white border border-slate-200 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">Cancel</button>
+                <button id="btn-grade-modal-cancel"
+                    class="px-4 py-2 bg-white border border-slate-200 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">Cancel</button>
             </div>
         </div>
     </div>
@@ -415,7 +271,7 @@
                 activeGradeSpan = null;
             }
 
-            $('.grade-trigger').on('click', function(e) {
+            $('.grade-trigger').on('click', function (e) {
                 e.preventDefault();
                 openGradeModal(this);
             });
@@ -434,16 +290,41 @@
                 }
             });
 
-            $('.grade-option').on('click', function() {
-                if (activeGradeSpan) {
-                    const newGrade = $(this).data('grade');
-                    const newClass = $(this).data('class');
-                    
-                    activeGradeSpan.removeClass('badge-gold badge-silver badge-bronze badge-rejected');
-                    activeGradeSpan.addClass(newClass).text(newGrade);
-                    
-                    closeGradeModal();
-                }
+            $('.grade-option').on('click', function () {
+                if (!activeGradeSpan) return;
+
+                const newGrade = $(this).data('grade');
+                const newClass = $(this).data('class');
+                const row = activeGradeSpan.closest('tr');
+                const applicantId = row.data('applicant-id');
+                const targetColumn = activeGradeSpan.data('target'); // 'grade' or 'verified_grade'
+
+                // Construct the URL dynamically
+                // Our API is routed via the application namespace
+                const apiUrl = `/application/api/applicants/${applicantId}/update-grade/`;
+
+                // Show some loading state
+                const originalText = activeGradeSpan.text();
+                activeGradeSpan.text('...');
+
+                $.ajax({
+                    url: apiUrl,
+                    method: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify({ grade: newGrade, target: targetColumn }),
+                    success: function (response) {
+                        if (response.success) {
+                            activeGradeSpan.removeClass('badge-gold badge-silver badge-bronze badge-rejected');
+                            activeGradeSpan.addClass(newClass).text(response.new_grade);
+                            closeGradeModal();
+                        }
+                    },
+                    error: function (xhr) {
+                        alert('Failed to update grade: ' + (xhr.responseJSON?.error || 'Unknown error'));
+                        activeGradeSpan.text(originalText);
+                        closeGradeModal();
+                    }
+                });
             });
         });
     </script>

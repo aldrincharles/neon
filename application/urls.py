@@ -9,7 +9,7 @@ named URL patterns used throughout templates via {% url '...' %}.
 
 from django.urls import path
 from . import views
-from .job_details_view import job_details_view
+from .views.job_details_view import job_details_view
 
 # Named URL patterns – referenced in navbar.html as {% url '<name>' %}
 urlpatterns = [
@@ -27,5 +27,8 @@ urlpatterns = [
 
     # Organization Directory page
     path('organizations/', views.organizations_view, name='organizations'),
+
+    # API Endpoints
+    path('api/applicants/<int:applicant_id>/update-grade/', views.update_grade_api, name='update_grade_api'),
 ]
 

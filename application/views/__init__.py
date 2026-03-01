@@ -70,3 +70,43 @@ def organizations_view(request):
     # Pass active_page so the navbar highlights 'Organizations'
     context = {'active_page': 'organizations'}
     return render(request, 'organization.html', context)
+
+
+import json
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+from application.controllers.applicant_controller import update_applicant_grade
+
+@csrf_exempt
+def update_grade_api(request, applicant_id):
+    """
+    API endpoint to update an applicant's grade via AJAX.
+    """
+    if request.method == 'POST':
+        try:
+            data = json.loads(request.body)
+            new_grade = data.get('grade')
+            target_column = data.get('target', 'grade')
+            
+            if not new_grade:
+                return JsonResponse({'success': False, 'error': 'Missing grade value'}, status=400)
+                
+            updated_applicant = update_applicant_grade(applicant_id, new_grade, target_column)
+            
+            # The returned grade could be either grade or verified_grade depending on target
+            updated_value = getattr(updated_applicant, target_column)
+            
+            return JsonResponse({
+                'success': True,
+                'applicant_id': updated_applicant.id,
+                'new_grade': updated_value,
+                'target': target_column
+            })
+            
+        except ValueError as e:
+            return JsonResponse({'success': False, 'error': str(e)}, status=400)
+        except Exception as e:
+            # Re-wrap ObjectDoesNotExist or other errors
+            return JsonResponse({'success': False, 'error': str(e)}, status=404)
+            
+    return JsonResponse({'success': False, 'error': 'Method not allowed'}, status=405)

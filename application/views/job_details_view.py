@@ -9,8 +9,8 @@ Renders the applicant list for a specific job posting identified by
 id as context so the template can reference it.
 """
 
-from django.shortcuts import render
-
+from django.shortcuts import render, get_object_or_404
+from application.models import Job
 
 def job_details_view(request, job_id):
     """
@@ -23,10 +23,14 @@ def job_details_view(request, job_id):
     Returns:
         HttpResponse: Rendered job details page.
     """
-    # Pass active_page so the navbar keeps 'Jobs' highlighted,
-    # and job_id so the template can build back-links or API calls.
+    # Fetch the actual job or return 404
+    job = get_object_or_404(Job, pk=job_id)
+    
+    # Pass active_page so the navbar keeps 'Jobs' highlighted
     context = {
         'active_page': 'jobs',
         'job_id': job_id,
+        'job': job,
+        'applicants': job.applicants.all(),
     }
     return render(request, 'jobs/JobDetails.html', context)

@@ -89,6 +89,9 @@ class JobDetailsViewTests(TestCase):
     def setUp(self):
         """Set up the test client before each test."""
         self.client = Client()
+        from application.models import Job
+        Job.objects.create(pk=1, title="Software Engineer", description="Test job 1", status="Active")
+        Job.objects.create(pk=3, title="Product Manager", description="Test job 3", status="Draft")
 
     def test_job_details_returns_200(self):
         """job_details_view should return HTTP 200 OK for a valid job_id."""
