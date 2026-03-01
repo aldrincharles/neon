@@ -44,51 +44,8 @@
 <body>
     <div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
         <div class="layout-container flex h-full grow flex-col">
-            <header
-                class="flex items-center justify-between whitespace-nowrap border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-6 lg:px-10 py-3 sticky top-0 z-50">
-                <div class="flex items-center gap-8">
-                    <div class="flex items-center gap-3 text-primary">
-                        <div class="size-8 bg-primary/10 rounded-lg flex items-center justify-center">
-                            <span class="material-symbols-outlined text-primary">diversity_3</span>
-                        </div>
-                        <h2 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">
-                            RecruitPro</h2>
-                    </div>
-                    <nav class="hidden lg:flex items-center gap-1">
-                        <a class="px-3 py-2 text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors"
-                            href="#">Dashboard</a>
-                        <a class="px-3 py-2 text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors"
-                            href="#">Jobs</a>
-                        <a class="px-3 py-2 text-primary bg-primary/5 rounded-md text-sm font-semibold"
-                            href="#">People</a>
-                        <a class="px-3 py-2 text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors"
-                            href="#">Organizations</a>
-                    </nav>
-                </div>
-                <div class="flex flex-1 justify-end gap-4 items-center">
-                    <label class="flex flex-col min-w-40 h-10 max-w-xs group">
-                        <div
-                            class="flex w-full flex-1 items-stretch rounded-lg bg-slate-100 dark:bg-slate-800 border border-transparent focus-within:border-primary/50 transition-all">
-                            <div class="text-slate-500 flex items-center justify-center pl-3">
-                                <span class="material-symbols-outlined text-[20px]">search</span>
-                            </div>
-                            <input
-                                class="form-input flex w-full min-w-0 flex-1 border-none bg-transparent focus:ring-0 placeholder:text-slate-500 text-sm"
-                                placeholder="Quick search..." value="" />
-                        </div>
-                    </label>
-                    <div class="flex items-center gap-2">
-                        <button
-                            class="flex items-center justify-center rounded-lg h-10 w-10 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
-                            <span class="material-symbols-outlined text-[20px]">notifications</span>
-                        </button>
-                        <div class="h-8 w-px bg-slate-200 dark:bg-slate-700 mx-1"></div>
-                        <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border border-slate-200 dark:border-slate-700"
-                            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAaFgmKNfe0n4HIZQtY2sroSMQjM5YogjcJs5-VEFWCGF7V6o90cZGyjbKxDK8bpKWPmUKlyD_49ki3njoqVE9Jdokpe4RXFKen-TB5CxUKmB_JIis23Hb-JSVwsbGXhhxstm8h-brF54VT5DG3yxv_Hrk3NZYrCuLhlf4e_OQdYWltA7IsUbGW2Usa4vdMLO_NI4A_7DNilhGcBkf-eq_7NW-v5MP2e32UimxVx1Pqg7T1O4Hjj9irB8JkcS78cNN2a8QZGQH8cmPK");'>
-                        </div>
-                    </div>
-                </div>
-            </header>
+            {# Shared navigation bar - active_page drives the highlighted link #}
+            {% include 'navbar.html' with active_page='people' %}
             <main class="flex-1 px-6 lg:px-10 py-8">
                 <div class="w-full mx-auto space-y-6">
                     <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
