@@ -4,5 +4,4 @@ from django.http import HttpResponse
 
 
 def say_hello(request):
-    # return render(request, 'hello.html')
-    return HttpResponse("Hello World")
+    return render(request, 'hello.html') # return render params (request, template_name, json_response, status_code)
