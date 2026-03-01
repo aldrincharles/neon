@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Jobs Management Dashboard</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+</head>
+
+<body class="bg-background-light font-display text-slate-900">
+    <div class="min-h-screen flex flex-col">
+        <nav class="bg-white border-b border-slate-200 sticky top-0 z-50">
+            <div class="max-w-[1440px] mx-auto px-6 h-16 flex items-center justify-between">
+                <div class="flex items-center gap-10">
+                    <div class="flex items-center gap-3">
+                        <div class="size-8 bg-primary rounded-lg flex items-center justify-center text-white">
+                            <span class="material-symbols-outlined text-xl">rocket_launch</span>
+                        </div>
+                        <h1 class="text-slate-900 font-bold text-lg leading-none">TalentStream</h1>
+                    </div>
+                    <div class="hidden md:flex items-center gap-1">
+                        <a class="px-4 py-2 text-sm font-medium text-slate-600 hover:text-primary transition-colors"
+                            href="#">Dashboard</a>
+                        <a class="px-4 py-2 text-sm font-bold text-primary border-b-2 border-primary" href="#">Jobs</a>
+                        <a class="px-4 py-2 text-sm font-medium text-slate-600 hover:text-primary transition-colors"
+                            href="#">People</a>
+                        <a class="px-4 py-2 text-sm font-medium text-slate-600 hover:text-primary transition-colors"
+                            href="#">Organizations</a>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4">
+                    <div class="relative hidden lg:block w-64">
+                        <span
+                            class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-lg">search</span>
+                        <input
+                            class="w-full pl-9 pr-4 py-1.5 bg-slate-100 border-none rounded-lg text-sm focus:ring-2 focus:ring-primary/20 placeholder:text-slate-400"
+                            placeholder="Quick search..." type="text" />
+                    </div>
+                    <button class="relative p-2 text-slate-500 hover:bg-slate-50 rounded-full transition-colors">
+                        <span class="material-symbols-outlined text-2xl">notifications</span>
+                        <span
+                            class="absolute top-2 right-2 size-2 bg-red-500 rounded-full border-2 border-white"></span>
+                    </button>
+                    <div class="h-8 w-px bg-slate-200 mx-1"></div>
+                    <button
+                        class="flex items-center gap-3 pl-2 pr-1 py-1 hover:bg-slate-50 rounded-full transition-colors group">
+                        <div class="text-right hidden sm:block">
+                            <p class="text-xs font-semibold text-slate-900 leading-tight">Alex Henderson</p>
+                            <p class="text-[10px] text-slate-500 leading-tight">Senior Recruiter</p>
+                        </div>
+                        <img alt="Recruiter Avatar" class="size-8 rounded-full border border-slate-200 object-cover"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrnvLaAdmW4NRYPOmZekyMP3F224PVQdNzM5-_-len7I-WHbzuEW7DL-0lSks2ViX6RWYpvuKJNeGJ4zMhMPN7Jn8EJFTxiMVyGxXfAGN_cLFujWYQJ5Ls4MupWBU7c4WU81FwmtL9Jy2zEUbkrWg4CKwdzTa4euY7daSPYwNU6rH5n1p6lmr0gvwolzmwOVw0opuDp4Yc2aVDxPigCLuvdlO9BMqSRC1PUeYHb_nnD_JNJ_f7mgxDDx5vh7gxGk1DpkHx5Rx8s8wg" />
+                        <span
+                            class="material-symbols-outlined text-slate-400 text-sm group-hover:text-slate-600">expand_more</span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+        <main class="flex-1 w-full">
+            <div class="bg-white border-b border-slate-200">
+                <div
+                    class="max-w-[1440px] mx-auto px-8 py-8 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <div>
+                        <h2 class="text-2xl font-bold text-slate-900">Jobs Management</h2>
+                        <p class="text-slate-500 text-sm">Manage your active openings and candidate pipeline</p>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <button
+                            class="flex items-center gap-2 px-4 py-2 bg-white border border-slate-200 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">
+                            <span class="material-symbols-outlined text-lg">filter_list</span>
+                            Export Report
+                        </button>
+                        <button
+                            class="bg-primary text-white px-4 py-2 rounded-lg text-sm font-semibold flex items-center gap-2 hover:bg-primary/90 transition-colors shadow-sm shadow-primary/20">
+                            <span class="material-symbols-outlined text-lg">add</span>
+                            Create New Job
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="max-w-[1440px] mx-auto p-8 space-y-8">
+                <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                        <p class="text-slate-500 text-sm font-medium">Active Roles</p>
+                        <div class="mt-2 flex items-end justify-between">
+                            <h3 class="text-3xl font-bold text-slate-900">24</h3>
+                            <span
+                                class="text-emerald-600 text-xs font-bold flex items-center gap-1 bg-emerald-50 px-2 py-1 rounded-full">
+                                <span class="material-symbols-outlined text-sm">trending_up</span> +5%
+                            </span>
+                        </div>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                        <p class="text-slate-500 text-sm font-medium">Total Candidates</p>
+                        <div class="mt-2 flex items-end justify-between">
+                            <h3 class="text-3xl font-bold text-slate-900">1,280</h3>
+                            <span
+                                class="text-slate-500 text-xs font-bold flex items-center gap-1 bg-slate-100 px-2 py-1 rounded-full">
+                                <span class="material-symbols-outlined text-sm">horizontal_rule</span> 0%
+                            </span>
+                        </div>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                        <p class="text-slate-500 text-sm font-medium">Hired This Month</p>
+                        <div class="mt-2 flex items-end justify-between">
+                            <h3 class="text-3xl font-bold text-slate-900">12</h3>
+                            <span
+                                class="text-emerald-600 text-xs font-bold flex items-center gap-1 bg-emerald-50 px-2 py-1 rounded-full">
+                                <span class="material-symbols-outlined text-sm">trending_up</span> +15%
+                            </span>
+                        </div>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                        <p class="text-slate-500 text-sm font-medium">Avg. Time to Fill</p>
+                        <div class="mt-2 flex items-end justify-between">
+                            <h3 class="text-3xl font-bold text-slate-900">18d</h3>
+                            <span
+                                class="text-rose-600 text-xs font-bold flex items-center gap-1 bg-rose-50 px-2 py-1 rounded-full">
+                                <span class="material-symbols-outlined text-sm">trending_down</span> -2%
+                            </span>
+                        </div>
+                    </div>
+                </section>
+                <div class="flex flex-col gap-6">
+                    <div class="flex items-center justify-between">
+                        <h2 class="text-xl font-bold text-slate-900">Active Openings</h2>
+                        <div class="flex items-center gap-3">
+                            <div class="flex bg-white rounded-lg border border-slate-200 p-1">
+                                <button
+                                    class="px-3 py-1.5 text-sm font-medium text-primary bg-primary/10 rounded-md">All
+                                    Roles</button>
+                                <button
+                                    class="px-3 py-1.5 text-sm font-medium text-slate-500 hover:text-slate-700">Engineering</button>
+                                <button
+                                    class="px-3 py-1.5 text-sm font-medium text-slate-500 hover:text-slate-700">Design</button>
+                                <button
+                                    class="px-3 py-1.5 text-sm font-medium text-slate-500 hover:text-slate-700">Product</button>
+                            </div>
+                            <button
+                                class="flex items-center gap-2 px-4 py-2 bg-white border border-slate-200 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">
+                                <span class="material-symbols-outlined text-lg">filter_list</span>
+                                More Filters
+                            </button>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 gap-4">
+                        <div
+                            class="bg-white border border-slate-200 rounded-xl p-6 hover:shadow-md transition-shadow group cursor-pointer">
+                            <div class="flex items-start justify-between">
+                                <div class="space-y-1">
+                                    <div class="flex items-center gap-3">
+                                        <h3
+                                            class="text-lg font-bold text-slate-900 group-hover:text-primary transition-colors">
+                                            Senior Full Stack Engineer</h3>
+                                        <span
+                                            class="bg-emerald-100 text-emerald-700 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">Active</span>
+                                    </div>
+                                    <p class="text-slate-500 text-sm max-w-4xl line-clamp-1">We are looking for a
+                                        Node.js and React expert to join our core product team and scale our
+                                        infrastructure.</p>
+                                </div>
+                                <button class="text-slate-400 hover:text-slate-600">
+                                    <span class="material-symbols-outlined">more_horiz</span>
+                                </button>
+                            </div>
+                            <div class="mt-6 flex flex-wrap items-center gap-y-4 gap-x-8">
+                                <div class="flex items-center gap-2 text-slate-600">
+                                    <span class="material-symbols-outlined text-slate-400">location_on</span>
+                                    <span class="text-sm font-medium">New York, NY (Hybrid)</span>
+                                </div>
+                                <div class="flex items-center gap-2 text-slate-600">
+                                    <span class="material-symbols-outlined text-slate-400">payments</span>
+                                    <span class="text-sm font-medium">$140k - $185k</span>
+                                </div>
+                                <div class="flex items-center gap-2 text-slate-600">
+                                    <span class="material-symbols-outlined text-slate-400">groups</span>
+                                    <span class="text-sm font-medium">2 / 5 Filled</span>
+                                    <div class="w-24 h-2 bg-slate-100 rounded-full overflow-hidden ml-1">
+                                        <div class="bg-primary h-full rounded-full" style="width: 40%"></div>
+                                    </div>
+                                </div>
+                                <div class="flex -space-x-2 ml-auto">
+                                    <img alt="Applicant 1" class="size-7 rounded-full border-2 border-white"
+                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmKqs1b-UJLzKoYBN2HgwL3XrWaxbUbvmMMfvfOWSkbnI5ExxC_fpzdC87ZRG8WQAdH8yGRAQf7nKllyncEUPzElJYPuc2b2yPG1eWW_DTs-JNgxnywYamSNz55uRZapSra8XRg_fZKBjk0x0qZLNgvn6eSxqoypygoE3wFO0bKdR6xcIax9xdC6UXrqfa25M28EIfdmOOCQGP6kIidhW4EJD3vb5X8j_PxKoGnro6xW2jdvWciepVcROmvrdeRcHTVorTJYKYcYv1" />
+                                    <img alt="Applicant 2" class="size-7 rounded-full border-2 border-white"
+                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0oEzNmZ7-nqGq1c_GY6VRxiHHtPUwRC2eLgU06poluHzBuT62oPZxH1ZZQJvFfgQ5wV80Y8t44xAjXe4jJzCUkT6bVUWzLUxxfq72z9VlUXrPw_L406HLKYkTpyWQa_6FleNTcxD_w022wnJ_lVfV6etJK-V5vhPAtDRnnmOGo-AVp5hbwctEGJ5DS6bh-5gtsH7RkMEwH0J6FJxd3G524nElqDVNAA_FVqlYBVFUoYooJZZTIZO99PDI1brZqntPFTJ6waNj6-zc" />
+                                    <img alt="Applicant 3" class="size-7 rounded-full border-2 border-white"
+                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtKfcuY7vWWdFmt8kjXqMlda8UWwyK6EtBlKyQMlLjaW_DsMbc9bVQi21N4fzuZDs7_jxWn1fXugFwWhdTlRYd8nPlZ2kKc1SjQmYVxZwbOG8ydn_2HG8CcV2k2-GSYET5yqkvBQ0tNqQ7srGIOWuVVtzd1QVdX3nPfbgDDcGaOvo2ooeYycS3WcSvAK8ighxVoIkHRjS8Y19XV8rlz23nP1lfxZJiC3VoXIwtzueg_pm293c0j95mwdg5xbBpHU_0DwIRyiSKrDoM" />
+                                    <div
+                                        class="size-7 rounded-full bg-slate-100 border-2 border-white flex items-center justify-center text-[10px] font-bold text-slate-500">
+                                        +12</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                            class="bg-white border border-slate-200 rounded-xl p-6 hover:shadow-md transition-shadow group cursor-pointer">
+                            <div class="flex items-start justify-between">
+                                <div class="space-y-1">
+                                    <div class="flex items-center gap-3">
+                                        <h3
+                                            class="text-lg font-bold text-slate-900 group-hover:text-primary transition-colors">
+                                            Product Designer (UX)</h3>
+                                        <span
+                                            class="bg-emerald-100 text-emerald-700 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">Active</span>
+                                    </div>
+                                    <p class="text-slate-500 text-sm max-w-4xl line-clamp-1">Lead design initiatives for
+                                        our mobile application, focusing on user-centric workflows and design systems.
+                                    </p>
+                                </div>
+                                <button class="text-slate-400 hover:text-slate-600">
+                                    <span class="material-symbols-outlined">more_horiz</span>
+                                </button>
+                            </div>
+                            <div class="mt-6 flex flex-wrap items-center gap-y-4 gap-x-8">
+                                <div class="flex items-center gap-2 text-slate-600">
+                                    <span class="material-symbols-outlined text-slate-400">public</span>
+                                    <span class="text-sm font-medium">Remote (Global)</span>
+                                </div>
+                                <div class="flex items-center gap-2 text-slate-600">
+                                    <span class="material-symbols-outlined text-slate-400">payments</span>
+                                    <span class="text-sm font-medium">$110k - $150k</span>
+                                </div>
+                                <div class="flex items-center gap-2 text-slate-600">
+                                    <span class="material-symbols-outlined text-slate-400">groups</span>
+                                    <span class="text-sm font-medium">0 / 2 Filled</span>
+                                    <div class="w-24 h-2 bg-slate-100 rounded-full overflow-hidden ml-1">
+                                        <div class="bg-primary h-full rounded-full" style="width: 0%"></div>
+                                    </div>
+                                </div>
+                                <div class="flex -space-x-2 ml-auto">
+                                    <img alt="Applicant 4" class="size-7 rounded-full border-2 border-white"
+                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIZ3Q2iG6RlrHgZXuq42mL483nvoAwyH5KBhCJPD_rNEg8d2w-YlpxyZgYL6DgWtsIgXEhLc8aCdiflQ26LSi2xeJwERub9gZO4DxB3yaO01eWf2TB0Bxka6x-c8nP3aiB9wOx8zVQYTxSG965hgi84-XudnAYbFDj4IAem2PlJQeNkZ8-R8Qb3BYR5LBywguM8pyjiFzjKnYbd9OgqLYhGWBC78wDCP8YQRDpXzedTa6yqSuFbL1cF8RkARmVeJes2vqCOYgsQ9qH" />
+                                    <img alt="Applicant 5" class="size-7 rounded-full border-2 border-white"
+                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuAaNErf7yBRK6DE65rRoYK7LAZ1_aSZ-jdBIH0UiPPSmAqz7u34bBZDQlJ3GchRdvNMJgf7hpBXj0UqNxm7wfn2HBN9xE_29Tu8B4K67YNYpflq0OGjzlI5gJnXjOQ0RRogH515C8LQ6zTaBWP8BA2wokoFwM16xr2lW8pMg9IENfE0eYN0dVcpU88XJxUpeZdrxwUgA4LPtGSKq_1I0x1MKijcjMnQ7_QfKktzDi_07j9bRVDGJPIuf9t_xi19A6NOIVSrJYjhwH6L" />
+                                    <div
+                                        class="size-7 rounded-full bg-slate-100 border-2 border-white flex items-center justify-center text-[10px] font-bold text-slate-500">
+                                        +8</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                            class="bg-white border border-slate-200 rounded-xl p-6 hover:shadow-md transition-shadow group cursor-pointer">
+                            <div class="flex items-start justify-between">
+                                <div class="space-y-1">
+                                    <div class="flex items-center gap-3">
+                                        <h3
+                                            class="text-lg font-bold text-slate-900 group-hover:text-primary transition-colors">
+                                            Marketing Manager</h3>
+                                        <span
+                                            class="bg-amber-100 text-amber-700 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">On
+                                            Hold</span>
+                                    </div>
+                                    <p class="text-slate-500 text-sm max-w-4xl line-clamp-1">Drive our go-to-market
+                                        strategy for the new enterprise tier, managing a team of content creators.</p>
+                                </div>
+                                <button class="text-slate-400 hover:text-slate-600">
+                                    <span class="material-symbols-outlined">more_horiz</span>
+                                </button>
+                            </div>
+                            <div class="mt-6 flex flex-wrap items-center gap-y-4 gap-x-8">
+                                <div class="flex items-center gap-2 text-slate-600">
+                                    <span class="material-symbols-outlined text-slate-400">location_on</span>
+                                    <span class="text-sm font-medium">London, UK</span>
+                                </div>
+                                <div class="flex items-center gap-2 text-slate-600">
+                                    <span class="material-symbols-outlined text-slate-400">payments</span>
+                                    <span class="text-sm font-medium">£80k - £100k</span>
+                                </div>
+                                <div class="flex items-center gap-2 text-slate-600">
+                                    <span class="material-symbols-outlined text-slate-400">groups</span>
+                                    <span class="text-sm font-medium">1 / 1 Filled</span>
+                                    <div class="w-24 h-2 bg-slate-100 rounded-full overflow-hidden ml-1">
+                                        <div class="bg-emerald-500 h-full rounded-full" style="width: 100%"></div>
+                                    </div>
+                                </div>
+                                <div class="flex -space-x-2 ml-auto">
+                                    <img alt="Applicant 6" class="size-7 rounded-full border-2 border-white"
+                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMAZSK6k9ldqxzm1hkOskKjJFrexWjcyoFPrRfRRdgPQjVGN5Vaa6TM0EQ4mCyloTiaKZ3M3m68Aa132835fpRzGNj_fZ1stLrZ9Vuh4X852VdCNM8vCSjgSU1gM4Ix-o7ucWMurC-oEmXOkTj7AtSbUlL1kGp4tgj-i61S2_SBkTJee0hLFGcWuberFSqpTk8kKZmO1E_kE0VPwSCiZFXcIvsOzcqyRYT4O51_WP32LyP9K4TJzu1LqJANV8LVX-1TFMvHpOCCO44" />
+                                    <div
+                                        class="size-7 rounded-full bg-slate-100 border-2 border-white flex items-center justify-center text-[10px] font-bold text-slate-500">
+                                        +4</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                            class="bg-white border border-slate-200 rounded-xl p-6 hover:shadow-md transition-shadow group cursor-pointer">
+                            <div class="flex items-start justify-between">
+                                <div class="space-y-1">
+                                    <div class="flex items-center gap-3">
+                                        <h3
+                                            class="text-lg font-bold text-slate-900 group-hover:text-primary transition-colors">
+                                            Customer Success Lead</h3>
+                                        <span
+                                            class="bg-emerald-100 text-emerald-700 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">Active</span>
+                                    </div>
+                                    <p class="text-slate-500 text-sm max-w-4xl line-clamp-1">Ensure long-term value for
+                                        our key accounts by implementing success metrics and expansion strategies.</p>
+                                </div>
+                                <button class="text-slate-400 hover:text-slate-600">
+                                    <span class="material-symbols-outlined">more_horiz</span>
+                                </button>
+                            </div>
+                            <div class="mt-6 flex flex-wrap items-center gap-y-4 gap-x-8">
+                                <div class="flex items-center gap-2 text-slate-600">
+                                    <span class="material-symbols-outlined text-slate-400">public</span>
+                                    <span class="text-sm font-medium">San Francisco, CA</span>
+                                </div>
+                                <div class="flex items-center gap-2 text-slate-600">
+                                    <span class="material-symbols-outlined text-slate-400">payments</span>
+                                    <span class="text-sm font-medium">$125k - $160k</span>
+                                </div>
+                                <div class="flex items-center gap-2 text-slate-600">
+                                    <span class="material-symbols-outlined text-slate-400">groups</span>
+                                    <span class="text-sm font-medium">3 / 4 Filled</span>
+                                    <div class="w-24 h-2 bg-slate-100 rounded-full overflow-hidden ml-1">
+                                        <div class="bg-primary h-full rounded-full" style="width: 75%"></div>
+                                    </div>
+                                </div>
+                                <div class="flex -space-x-2 ml-auto">
+                                    <img alt="Applicant 7" class="size-7 rounded-full border-2 border-white"
+                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUBwEB2JxwK30tiuozM5447yd2_MrUnLL1QpMmAB1XbNh8SRrLLXQ3lsFwdfOEyFErfmF-mgirz2-7Qs7772nYs0_mb2IKhNQL0IQSfAu2chURtwhYxNDlCtTfhvAg34O0eZs23SWumB2F_4ZFeodoOku2VOJ9dPWMlUdwmdqxWNxUbtRcGx5oxwVFXnpznzhrQEY5nBwXajHAZae6GA4YinTMOJ7bLeRUEGWwT81vk6K28I_JtwGHarDr5ffrW1UcYybUn9zbNfkJ" />
+                                    <img alt="Applicant 8" class="size-7 rounded-full border-2 border-white"
+                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuAc7agtw53JCq0u3SNGxFwD1rLUMyXybK6mp_YSIkCtrmdbUxTMZZuzp6GufhiXboTknzRD4NufJPombKCki23-TD46zf5cg-UlZ0FzSNUfZp_zEGrVrt3-VeWU7fPEWZBgU6kQouf9a4Adcw4cGlZC7c_-PTjqx9r4ifDWVGDS18mdxREZKa7zbJqrcvjn_ngGaDXs3MNpbkJJkB3QkdIHF7X5BPDsbn4BMeFx5gG-zPqQQRfeXbsvZELPnxgOVIKiP77tB50dD62b" />
+                                    <div
+                                        class="size-7 rounded-full bg-slate-100 border-2 border-white flex items-center justify-center text-[10px] font-bold text-slate-500">
+                                        +22</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <footer class="flex items-center justify-between pt-4 pb-12 border-t border-slate-200">
+                    <p class="text-sm text-slate-500">Showing 4 of 24 active roles</p>
+                    <div class="flex gap-2">
+                        <button
+                            class="px-3 py-1.5 bg-white border border-slate-200 rounded text-sm font-medium text-slate-400 cursor-not-allowed">Previous</button>
+                        <button
+                            class="px-3 py-1.5 bg-white border border-slate-200 rounded text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">Next</button>
+                    </div>
+                </footer>
+            </div>
+        </main>
+    </div>
+
+</body>
+
+</html>
