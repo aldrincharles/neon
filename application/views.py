@@ -38,7 +38,7 @@ def jobs_view(request):
     """
     # Pass active_page so the navbar highlights 'Jobs'
     context = {'active_page': 'jobs'}
-    return render(request, 'jobs.html', context)
+    return render(request, 'jobs/Jobs.html', context)
 
 
 def people_view(request):

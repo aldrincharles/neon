@@ -50,9 +50,9 @@ class JobsViewTests(TestCase):
         self.assertEqual(response.status_code, 200)
 
     def test_jobs_uses_correct_template(self):
-        """jobs_view should render jobs.html."""
+        """jobs_view should render jobs/Jobs.html."""
         response = self.client.get(reverse('jobs'))
-        self.assertTemplateUsed(response, 'jobs.html')
+        self.assertTemplateUsed(response, 'jobs/Jobs.html')
 
     def test_jobs_active_page_context(self):
         """jobs_view should pass active_page='jobs' in context."""
@@ -83,7 +83,33 @@ class PeopleViewTests(TestCase):
         self.assertEqual(response.context['active_page'], 'people')
 
 
-class OrganizationsViewTests(TestCase):
+class JobDetailsViewTests(TestCase):
+    """Tests for the job_details_view function."""
+
+    def setUp(self):
+        """Set up the test client before each test."""
+        self.client = Client()
+
+    def test_job_details_returns_200(self):
+        """job_details_view should return HTTP 200 OK for a valid job_id."""
+        response = self.client.get(reverse('job_details', kwargs={'job_id': 1}))
+        self.assertEqual(response.status_code, 200)
+
+    def test_job_details_uses_correct_template(self):
+        """job_details_view should render jobs/JobDetails.html."""
+        response = self.client.get(reverse('job_details', kwargs={'job_id': 1}))
+        self.assertTemplateUsed(response, 'jobs/JobDetails.html')
+
+    def test_job_details_active_page_context(self):
+        """job_details_view should pass active_page='jobs' in context."""
+        response = self.client.get(reverse('job_details', kwargs={'job_id': 1}))
+        self.assertEqual(response.context['active_page'], 'jobs')
+
+    def test_job_details_job_id_in_context(self):
+        """job_details_view should pass the job_id integer in context."""
+        response = self.client.get(reverse('job_details', kwargs={'job_id': 3}))
+        self.assertEqual(response.context['job_id'], 3)
+
     """Tests for the organizations_view function."""
 
     def setUp(self):
