@@ -1,7 +1,7 @@
 """
 views.py
 --------
-View functions for the TalentStream application.
+View functions for the CRMApp application.
 
 Each view renders its corresponding template and passes an
 ``active_page`` context variable consumed by the shared navbar

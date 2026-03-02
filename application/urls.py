@@ -1,7 +1,7 @@
 """
 urls.py (application)
 ----------------------
-URL configuration for the TalentStream application.
+URL configuration for the CRMApp application.
 
 Maps URL paths to the corresponding view functions and assigns
 named URL patterns used throughout templates via {% url '...' %}.

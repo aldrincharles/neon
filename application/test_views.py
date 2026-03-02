@@ -1,7 +1,7 @@
 """
 test_views.py
 -------------
-Unit tests for all TalentStream application views.
+Unit tests for all CRMApp application views.
 
 Tests verify:
 - HTTP 200 OK status code for each page.
